@@ -99,9 +99,22 @@ var getRandomArbitrary = function() {
   return Math.floor(Math.random() * (30 - 0) + 0);
 }
 var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
-//Above your given a function that will return a random number between 0 and 30, and an array full or numbers. Your job is to write a function named finder that will get a random number, then loop through the array to see if that random number is in the array. If it is, return true, if it's not, return false
+//Above your given a function that will return a random number between 0 and 30, 
+//and an array full or numbers. Your job is to write a function named finder that 
+//will get a random number, then loop through the array to see if that random number 
+//is in the array. If it is, return true, if it's not, return false
 
-  //Code Here
+var finder = function (numbers) {
+  var newNum = getRandomArbitrary();
+  for (var i = 0; i < numbers.length; i++) {
+    if (newNum === numbers[i]) {
+      return true;
+    } else {
+      i++;
+    }
+  }
+  return false;
+};
 
 
 //Next problem
@@ -109,9 +122,25 @@ var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 
 
 var str = 'this is my sentence';
-//Write a function called reverse that takes is given str as it's only argument and returns that string after it's been reversed
+//Write a function called reverse that takes is given str as it's only argument and returns that string 
+//after it's been reversed
 
-  //Code Here
+//So that it says "sentence is my this"
+var reverse = function(string) {
+  var new1 = str.split(' ');
+  var new2 = new1.reverse();
+  var new3 = new2.join(' ');
+  return new3;
+}
+
+// so it says "ecnetnes ym si siht"
+var reverse = function(string) {
+  var new1 = str.split('');
+  var new2 = new1.reverse();
+  var new3 = new2.join('');
+  return new3;
+}
+
 
 
 //Next Problem
@@ -120,19 +149,39 @@ var str = 'this is my sentence';
 var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 /*
   Here we're going to write a function that mimics going shopping and checking things off of our grocery list,
-  and adding new items to our list. Write a function called removeItem that is given two arguments, the first is myGroceryList, and the
-  second is an item to remove from myGroceryList. If the second argument (or the item to add or remove) matches an item in myGroceryList,
-  remove that item from the your grocery list and return the new, updated grocery list. Once you do that,
-  write another function called addItem that is given two arguments, the first is myGroceryList
+  and adding new items to our list. Write a function called removeItem that is given two arguments, the first is 
+  myGroceryList, and the second is an item to remove from myGroceryList. If the second argument (or the item to add or remove) 
+  matches an item in myGroceryList,remove that item from the your grocery list and return the new, updated grocery list. 
+  Once 
+  you do that, write another function called addItem that is given two arguments, the first is myGroceryList
   and the second is an item to add to your grocery list. In addItem add the item you passed in to
   myGroceryList then return the new, updated grocery list.
 */
 
-  //Code Here
+var removeItem = function (grocery, remove) {
+  for (var i = 0; i < grocery.length; i++) {
+    if (remove === grocery[i]) {
+      grocery.splice(i, 1);
+      i--;
+    }
+  }
+  return grocery;
+}
 
 //removeItem('chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem('Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
-
+var addItems = function (grocery, item) {
+  var exists;
+  for (var i = 0; i < grocery.length; i++) {
+    if (grocery[i] === item) {
+      exists = true;
+    } 
+  }
+  if (!exists) {
+    grocery.push(item);
+  }
+  return grocery;
+};
 
 
 //Next Problem
@@ -141,7 +190,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
-  //Code Here
+var maker = function (array) {
+  var arrName = [];
+  for (var i = 0; i < 215; i++) {
+    arrName.push(i + 1);
+  }
+  return arrName;
+}
 
 
 
@@ -152,7 +207,14 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //Write a function called addTen that is given 'numbers' as it's only argument and returns a new
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
-  //Code Here
+var addTen = function (numb) {
+  var newA = [];
+  for (var i = 0; i < numb.length; i++) {
+    var a = Number(numb[i]);
+    newA.push(a + 10);
+  }
+  return newA;
+}
 
 
 
@@ -173,7 +235,14 @@ for(var i = 0; i < num2; i++){
 //Above is some code that adds a random number to both arr1 and arr2.
 //Write a function that is given arr1 and arr2 is it's only arguments. Return the array which is longest.
 
-  //Code Here
+var larger = function (arr1, arr2) {
+  if(arr1.length > arr2.length) {
+    return "arr1";
+  } else {
+    return "arr2"
+  }
+}
+
 
 
 /*As a continuation of the previous problem, write another function called 'both'.
@@ -181,4 +250,16 @@ for(var i = 0; i < num2; i++){
   'both' should return a new array full of numbers that are found in both arr1 and arr2.
 */
 
-  //Code Here
+var both = function (arr1, arr2) {
+  var newAr = [];
+  newAr.push(arr1 + "," + arr2);
+  return newAr;
+}
+
+//Or
+
+var both = function (arr1, arr2) {
+  var newAr =arr1.concat(arr2);
+  return newAr;
+}
+
